@@ -17,14 +17,15 @@ export function Moment() {
         </AspectRatio>
         <DateAndTime />
         <View>
-          <Text className="font-sans text-xl text-justify">
-            our special day {"\n"}we went out
+          <Text className="font-sans text-2xl text-justify">
+            our special day
           </Text>
+          <Text className="font-sans text-xl text-justify">we went out</Text>
         </View>
       </View>
       <View className="items-baseline flex-row justify-between">
         <Text className="text-muted-foreground text-sm">
-          Hiza was with Ivan {"<3"}
+          Hiza was with Ivan
         </Text>
         <CoupleAvatar />
       </View>
