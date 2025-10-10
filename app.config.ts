@@ -2,12 +2,12 @@ import { ExpoConfig, ConfigContext } from "expo/config";
 import { version } from "./package.json";
 
 // changes these variables
-const NAME = "MyApp";
+const NAME = "Our Moments";
 const OWNER = "ivaintwc";
-const SLUG = "myapp";
-const SCHEME = "myapp";
-const PACKAGE_NAME = "com.ivaintwc.myapp";
-const BUNDLE_IDENTIFIER = "com.ivaintwc.myapp";
+const SLUG = "our-moments";
+const SCHEME = "ourmoments";
+const PACKAGE_NAME = "com.ivaintwc.ourmoments";
+const BUNDLE_IDENTIFIER = "com.ivaintwc.ourmoments";
 
 const ICON = "./assets/images/icon.png";
 const SPLASH_ICON = {
@@ -26,7 +26,7 @@ const ADAPTIVE_ICON = {
   monochrome: "./assets/images/android-icon-monochrome.png",
 };
 
-const EXPO_PROJECT_ID = "";
+const EXPO_PROJECT_ID = "287575a9-0ef2-4fed-9410-2616fdd33811";
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   const { name, scheme, bundleIdentifier, packageName } = getDynamicConfig(
@@ -41,6 +41,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     version,
     orientation: "portrait",
     icon: ICON,
+    platforms: ["ios", "android", "web"],
     scheme,
     userInterfaceStyle: "automatic",
     newArchEnabled: true,
