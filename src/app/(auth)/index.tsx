@@ -12,7 +12,7 @@ export default function Auth() {
           Welcome to Moments
         </Text>
         <Text className="text-lg text-center text-muted-foreground">
-          Sign in to create moments with your special one
+          Continue to create moments with your special one
         </Text>
       </View>
       <View className="gap-1 w-full">

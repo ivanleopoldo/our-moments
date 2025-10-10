@@ -5,9 +5,9 @@ import { Button } from "../ui/button";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { router } from "expo-router";
-import CoupleAvatar from "../couple-avatar";
+import { CoupleAvatar } from "../couple-avatar";
 
-export default function Header(props: NativeStackHeaderProps) {
+export function Header(props: NativeStackHeaderProps) {
   const insets = useSafeAreaInsets();
   return (
     <View

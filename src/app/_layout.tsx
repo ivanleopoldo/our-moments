@@ -10,8 +10,8 @@ import { useColorScheme } from "nativewind";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export const unstable_settings = {
-  anchor: "index",
-  initialRouteName: "index",
+  anchor: "(app)",
+  initialRouteName: "(app)",
 };
 
 export default function RootLayout() {
@@ -22,16 +22,7 @@ export default function RootLayout() {
       <SafeAreaProvider>
         <Stack>
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-          <Stack.Screen name="index" />
-          <Stack.Screen name="moment/[id]" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="settings"
-            options={{
-              headerLargeTitle: true,
-              headerTitle: "Settings",
-              presentation: "modal",
-            }}
-          />
+          <Stack.Screen name="(app)" options={{ headerShown: false }} />
         </Stack>
         <PortalHost />
         <StatusBar

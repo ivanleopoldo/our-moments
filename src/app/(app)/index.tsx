@@ -1,6 +1,6 @@
-import CoupleAvatar from "@/components/couple-avatar";
-import DateAndTime from "@/components/date-and-time";
-import Header from "@/components/native/header";
+import { CoupleAvatar } from "@/components/couple-avatar";
+import { DateAndTime } from "@/components/date-and-time";
+import { Header } from "@/components/native/header";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";

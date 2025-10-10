@@ -1,4 +1,4 @@
-import CoupleAvatar from "@/components/couple-avatar";
+import { CoupleAvatar } from "@/components/couple-avatar";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";

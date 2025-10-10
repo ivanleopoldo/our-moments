@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { Text } from "./ui/text";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
-export default function CoupleAvatar() {
+export function CoupleAvatar() {
   return (
     <View className="items-center justify-end flex-row gap-1">
       <Avatar alt="@mrzachnugent" className="border-border border">
