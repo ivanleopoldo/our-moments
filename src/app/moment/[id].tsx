@@ -1,8 +1,7 @@
+import CoupleAvatar from "@/components/couple-avatar";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
-import { Entypo } from "@expo/vector-icons";
 import { Image, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -38,23 +37,7 @@ export default function Home() {
               <Text className="font-sans text-xl">our special day</Text>
             </View>
           </View>
-          <View className="items-center justify-end flex-row gap-1">
-            <Avatar alt="@mrzachnugent" className="border-border border">
-              <AvatarImage
-                source={{ uri: "https://github.com/mrzachnugent.png" }}
-              />
-              <AvatarFallback>
-                <Text>ZN</Text>
-              </AvatarFallback>
-            </Avatar>
-            <Entypo className="text-primary" size={24} name="heart" />
-            <Avatar alt="@leerob" className="border-border border">
-              <AvatarImage source={{ uri: "https://github.com/leerob.png" }} />
-              <AvatarFallback>
-                <Text>LR</Text>
-              </AvatarFallback>
-            </Avatar>
-          </View>
+          <CoupleAvatar />
         </Card>
       </View>
     </SafeAreaView>

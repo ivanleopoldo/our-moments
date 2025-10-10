@@ -23,6 +23,10 @@ export default function RootLayout() {
         <Stack>
           <Stack.Screen name="index" />
           <Stack.Screen name="moment/[id]" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="settings"
+            options={{ headerShown: false, presentation: "modal" }}
+          />
         </Stack>
         <PortalHost />
         <StatusBar
