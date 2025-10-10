@@ -21,11 +21,16 @@ export default function RootLayout() {
     <ThemeProvider value={NAV_THEME[colorScheme ?? "light"]}>
       <SafeAreaProvider>
         <Stack>
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen name="index" />
           <Stack.Screen name="moment/[id]" options={{ headerShown: false }} />
           <Stack.Screen
             name="settings"
-            options={{ headerShown: false, presentation: "modal" }}
+            options={{
+              headerLargeTitle: true,
+              headerTitle: "Settings",
+              presentation: "modal",
+            }}
           />
         </Stack>
         <PortalHost />

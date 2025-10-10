@@ -3,7 +3,8 @@ import { View, Text } from "react-native";
 
 export default function DateAndTime() {
   const style = useMemo(
-    () => "self-start py-1 bg-input/20 border-border border rounded-full px-2",
+    () =>
+      "self-start py-1 text-muted-foreground bg-input/20 border-border border rounded-full px-2",
     [],
   );
 
