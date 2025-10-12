@@ -3,6 +3,7 @@ import { Text } from "@/components/ui/text";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "@/components/ui/button";
 import { Fontisto } from "@/lib/icons/fontisto";
+import { router } from "expo-router";
 
 export default function Auth() {
   return (
@@ -16,7 +17,10 @@ export default function Auth() {
         </Text>
       </View>
       <View className="gap-1 w-full">
-        <Button variant={"outline"}>
+        <Button
+          onPress={() => router.replace("/(auth)/onboarding")}
+          variant={"outline"}
+        >
           <Fontisto name="google" className="text-foreground" size={16} />
           <Text>Continue with Google</Text>
         </Button>

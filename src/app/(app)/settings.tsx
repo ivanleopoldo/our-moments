@@ -22,6 +22,9 @@ export default function Settings() {
             <Row onPress={() => router.replace("/(auth)")}>
               <Text>Go to Auth</Text>
             </Row>
+            <Row onPress={() => router.replace("/(auth)/onboarding")}>
+              <Text>Go to Onboarding</Text>
+            </Row>
           </List>
         </ScrollView>
       </SafeAreaView>
