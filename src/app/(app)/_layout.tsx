@@ -13,6 +13,7 @@ export default function _layout() {
           presentation: "modal",
         }}
       />
+      <Stack.Screen name="connect" options={{ headerShown: false }} />
     </Stack>
   );
 }
