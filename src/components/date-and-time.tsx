@@ -1,21 +1,18 @@
-import { useMemo } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import { Pill, PillList } from "./pill";
 
 export function DateAndTime() {
-  const style = useMemo(
-    () =>
-      "self-start py-1 text-muted-foreground bg-input/20 border-border border rounded-full px-2",
-    [],
-  );
-
   return (
-    <View className="items-center flex-row justify-between">
-      <View className="flex-row gap-1">
-        <Text className={style}>10</Text>
-        <Text className={style}>10</Text>
-        <Text className={style}>2024</Text>
-      </View>
-      <Text className={style}>1:52 PM</Text>
+    <View className="w-full items-center flex-row justify-between">
+      <PillList>
+        <Pill>Oct</Pill>
+        <Pill>10</Pill>
+        <Pill>2024</Pill>
+      </PillList>
+      <PillList>
+        <Pill>Fri</Pill>
+        <Pill>1:52 PM</Pill>
+      </PillList>
     </View>
   );
 }
