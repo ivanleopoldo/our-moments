@@ -14,16 +14,12 @@ type InputOTPProps = {
   maxLength?: number;
   fixedCode?: string;
   onComplete?: (code: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
 };
 
 export function InputOTP({
   maxLength = 6,
   fixedCode = "",
   onComplete,
-  onFocus,
-  onBlur,
 }: InputOTPProps) {
   const ref = useRef<OTPInputRef>(null);
 
@@ -38,14 +34,6 @@ export function InputOTP({
     onComplete?.(code);
   };
 
-  const handleFocus = () => {
-    onFocus?.();
-  };
-
-  const handleBlur = () => {
-    onBlur?.();
-  };
-
   return (
     <View className="w-full">
       <OTPInput
@@ -54,8 +42,6 @@ export function InputOTP({
         editable={!fixedCode}
         onComplete={handleComplete}
         maxLength={SLOT_COUNT}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
         render={({ slots }) => (
           <View
             className="flex-row w-full justify-between items-center"

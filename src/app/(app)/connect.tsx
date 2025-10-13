@@ -13,14 +13,12 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { InputOTP } from "@/components/otp-input";
 import * as Clipboard from "expo-clipboard";
+import { router } from "expo-router";
 
+// TODO: on focus on input remove other cards and show only input
 export default function Connect() {
   const scrollRef = useRef<ScrollView>(null);
   const [isCopied, setIsCopied] = useState(false);
-
-  const handleFocus = (yOffset: number) => {
-    scrollRef.current?.scrollTo({ y: yOffset, animated: true });
-  };
 
   return (
     <SafeAreaView className="flex-1 p-4">
@@ -31,12 +29,7 @@ export default function Connect() {
         <ScrollView
           ref={scrollRef}
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{
-            flexGrow: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 16,
-          }}
+          contentContainerClassName="flex-grow justify-center items-center gap-8"
         >
           <View className="items-center gap-2">
             <Text className="text-4xl font-bold text-center">
@@ -62,11 +55,7 @@ export default function Connect() {
                     {isCopied ? "Copied!" : "Tap to copy!"}
                   </Text>
                 </View>
-                <InputOTP
-                  maxLength={6}
-                  fixedCode="123564"
-                  onFocus={() => handleFocus(200)}
-                />
+                <InputOTP fixedCode="123564" />
                 <Button
                   onPress={() => {
                     Share.share({
@@ -92,10 +81,10 @@ export default function Connect() {
                 </Text>
               </View>
               <View className="justify-center items-center">
-                <InputOTP maxLength={6} onFocus={() => handleFocus(600)} />
+                <InputOTP />
               </View>
               <View className="w-full">
-                <Button>
+                <Button onPress={() => router.replace("/(app)")}>
                   <Text>Connect</Text>
                 </Button>
               </View>
