@@ -1,7 +1,7 @@
 import { Entypo } from "@expo/vector-icons";
 import { View } from "react-native";
-import { Text } from "./ui/text";
-import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
+import { Text } from "../ui/text";
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 
 export function CoupleAvatar() {
   return (

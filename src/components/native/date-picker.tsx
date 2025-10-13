@@ -8,7 +8,7 @@ export type DatePickerProps = {
   onChange: (date: Dayjs) => void;
 };
 
-export default function DatePicker({ ...props }: DatePickerProps) {
+export function DatePicker({ ...props }: DatePickerProps) {
   const defaultClassNames = useDefaultClassNames();
 
   return (

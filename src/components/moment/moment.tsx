@@ -1,9 +1,9 @@
 import { View, Image } from "react-native";
-import { Text } from "./ui/text";
-import { CoupleAvatar } from "./couple-avatar";
+import { Text } from "../ui/text";
+import { CoupleAvatar } from "../general/couple-avatar";
 import { DateAndTime } from "./date-and-time";
-import { AspectRatio } from "./ui/aspect-ratio";
-import { Card } from "./ui/card";
+import { AspectRatio } from "../ui/aspect-ratio";
+import { Card } from "../ui/card";
 import { Dayjs } from "dayjs";
 
 export type MomentProps = {

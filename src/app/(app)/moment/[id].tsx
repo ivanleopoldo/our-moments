@@ -1,4 +1,4 @@
-import { Moment } from "@/components/moment";
+import { Moment } from "@/components/moment/moment";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 

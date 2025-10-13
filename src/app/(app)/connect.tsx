@@ -11,7 +11,7 @@ import { Text } from "@/components/ui/text";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { InputOTP } from "@/components/otp-input";
+import { InputOTP } from "@/components/native/otp-input";
 import * as Clipboard from "expo-clipboard";
 import { router } from "expo-router";
 

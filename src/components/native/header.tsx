@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { router } from "expo-router";
-import { CoupleAvatar } from "../couple-avatar";
+import { CoupleAvatar } from "../general/couple-avatar";
 import { Dayjs } from "dayjs";
 import { useDateStore } from "@/lib/stores/use-date-store";
 

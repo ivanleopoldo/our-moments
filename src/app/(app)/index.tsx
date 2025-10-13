@@ -1,14 +1,14 @@
-import { Moment } from "@/components/moment";
+import { Moment } from "@/components/moment/moment";
 import { Header } from "@/components/native/header";
 import dayjs from "dayjs";
 import { Stack } from "expo-router";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDateStore } from "@/lib/stores/use-date-store";
-import { BottomSheetModal } from "@/components/bottom-sheet-modal";
+import { BottomSheetModal } from "@/components/native/bottom-sheet-modal";
 import { useRef } from "react";
 import { BottomSheetModal as RNBottomSheetModal } from "@gorhom/bottom-sheet";
-import DatePicker from "@/components/date-picker";
+import { DatePicker } from "@/components/native/date-picker";
 
 export default function Home() {
   const bottomSheetModalRef = useRef<RNBottomSheetModal>(null);
