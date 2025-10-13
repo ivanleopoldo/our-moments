@@ -7,7 +7,13 @@ import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { router } from "expo-router";
 import { CoupleAvatar } from "../couple-avatar";
 
-export function Header(props: NativeStackHeaderProps) {
+export type HeaderProps = {
+  onPressDate?: () => void;
+  goPreviousDay?: () => void;
+  goNextDay?: () => void;
+} & NativeStackHeaderProps;
+
+export function Header(props: HeaderProps) {
   const insets = useSafeAreaInsets();
   return (
     <View
@@ -18,14 +24,16 @@ export function Header(props: NativeStackHeaderProps) {
         <CoupleAvatar />
       </Button>
       <View className="items-center flex-row gap-2 px-2">
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" onPress={props.goPreviousDay}>
           <Entypo name="chevron-left" className="text-foreground" />
         </Button>
-        <Button onPress={() => router.push("/moment/1")} variant="outline">
+
+        <Button variant="outline" onPress={props.onPressDate}>
           <Text>Today</Text>
           <Entypo name="chevron-down" className="text-foreground" />
         </Button>
-        <Button variant="outline" size="icon">
+
+        <Button variant="outline" size="icon" onPress={props.goNextDay}>
           <Entypo name="chevron-right" className="text-foreground" />
         </Button>
       </View>
