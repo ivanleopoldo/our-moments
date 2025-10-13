@@ -48,7 +48,12 @@ export default function Connect() {
             </Text>
           </View>
 
-          <Pressable className="w-full">
+          <Pressable
+            onPress={() => {
+              Clipboard.setStringAsync("123564").then(() => setIsCopied(true));
+            }}
+            className="w-full"
+          >
             <Card className="rounded-3xl p-6">
               <View className="gap-4">
                 <View>
@@ -62,16 +67,6 @@ export default function Connect() {
                   fixedCode="123564"
                   onFocus={() => handleFocus(200)}
                 />
-                <Button
-                  onPress={() => {
-                    Clipboard.setStringAsync("123564").then(() =>
-                      setIsCopied(true),
-                    );
-                  }}
-                  variant="outline"
-                >
-                  <Text>Copy my invite code</Text>
-                </Button>
                 <Button
                   onPress={() => {
                     Share.share({
