@@ -4,17 +4,18 @@ import { CoupleAvatar } from "./couple-avatar";
 import { DateAndTime } from "./date-and-time";
 import { AspectRatio } from "./ui/aspect-ratio";
 import { Card } from "./ui/card";
+import { Dayjs } from "dayjs";
 
 export type MomentProps = {
   imageUrl: string;
   title: string;
   note?: string;
-  date?: Date;
+  date?: Dayjs;
 };
 
 export function Moment({ ...props }: MomentProps) {
   return (
-    <Card className="rounded-3xl p-4 mb-8">
+    <Card className="rounded-3xl p-4 justify-between">
       <View className="relative gap-2">
         <AspectRatio className="relative w-full overflow-hidden rounded-xl">
           <Image

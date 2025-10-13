@@ -6,9 +6,11 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { router } from "expo-router";
 import { CoupleAvatar } from "../couple-avatar";
+import { Dayjs } from "dayjs";
+import { useDateStore } from "@/lib/stores/use-date-store";
 
 export type HeaderProps = {
-  date?: Date;
+  date?: Dayjs;
   onPressDate?: () => void;
   goPreviousDay?: () => void;
   goNextDay?: () => void;
@@ -16,13 +18,11 @@ export type HeaderProps = {
 
 export function Header(props: HeaderProps) {
   const insets = useSafeAreaInsets();
-  const today = new Date();
-  const selected = props.date ? new Date(props.date) : today;
+  const { date, subDays, addDays, isSame, isAfter } = useDateStore();
 
-  const isNextDisabled =
-    selected.getFullYear() === today.getFullYear() &&
-    selected.getMonth() === today.getMonth() &&
-    selected.getDate() === today.getDate();
+  const goPreviousDay = props.goPreviousDay || (() => subDays(1));
+
+  const goNextDay = props.goNextDay || (() => addDays(1));
 
   return (
     <View
@@ -34,7 +34,7 @@ export function Header(props: HeaderProps) {
       </Button>
 
       <View className="items-center flex-row gap-2 px-2">
-        <Button variant="outline" size="icon" onPress={props.goPreviousDay}>
+        <Button variant="outline" size="icon" onPress={goPreviousDay}>
           <Entypo name="chevron-left" className="text-foreground" />
         </Button>
 
@@ -44,25 +44,20 @@ export function Header(props: HeaderProps) {
           onPress={props.onPressDate}
         >
           <Text>
-            {selected
-              ? selected.toDateString() === today.toDateString()
-                ? "Today"
-                : selected.getFullYear() === today.getFullYear()
-                  ? selected.toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                    })
-                  : selected.toLocaleDateString("en-US")
-              : ""}
+            {isSame(date)
+              ? "Today"
+              : isSame(date, "year")
+                ? date.format("MMM D")
+                : date.format("M/D/YY")}
           </Text>
           <Entypo name="chevron-down" className="text-foreground" />
         </Button>
 
         <Button
+          disabled={isAfter(date)}
           variant="outline"
           size="icon"
-          disabled={isNextDisabled}
-          onPress={props.goNextDay}
+          onPress={goNextDay}
         >
           <Entypo name="chevron-right" className="text-foreground" />
         </Button>
