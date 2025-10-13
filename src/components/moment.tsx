@@ -5,22 +5,29 @@ import { DateAndTime } from "./date-and-time";
 import { AspectRatio } from "./ui/aspect-ratio";
 import { Card } from "./ui/card";
 
-export function Moment() {
+export type MomentProps = {
+  imageUrl: string;
+  title: string;
+  note?: string;
+  date?: Date;
+};
+
+export function Moment({ ...props }: MomentProps) {
   return (
     <Card className="rounded-3xl p-4 mb-8">
       <View className="relative gap-2">
         <AspectRatio className="relative w-full overflow-hidden rounded-xl">
           <Image
-            source={{ uri: "https://picsum.photos/1080/1920" }}
+            source={{ uri: props.imageUrl }}
             className="absolute bottom-0 left-0 right-0 top-0 object-cover"
           />
         </AspectRatio>
-        <DateAndTime />
+        <DateAndTime date={props.date} />
         <View>
-          <Text className="font-sans text-2xl text-justify">
-            our special day
-          </Text>
-          <Text className="font-sans text-xl text-justify">we went out</Text>
+          <Text className="font-sans text-2xl text-justify">{props.title}</Text>
+          {props.note && (
+            <Text className="font-sans text-xl text-justify">{props.note}</Text>
+          )}
         </View>
       </View>
       <View className="items-baseline flex-row justify-between">
