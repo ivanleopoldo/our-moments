@@ -1,18 +1,45 @@
-import { Moment } from "@/components/moment/moment";
+import { MomentProps } from "@/components/moment/moment";
+import { MomentCarousel } from "@/components/moment/moment-carousel";
+import { BottomSheetModal } from "@/components/native/bottom-sheet-modal";
+import { DatePicker } from "@/components/native/date-picker";
 import { Header } from "@/components/native/header";
+import { useDateStore } from "@/lib/stores/use-date-store";
+import { BottomSheetModal as RNBottomSheetModal } from "@gorhom/bottom-sheet";
 import dayjs from "dayjs";
 import { Stack } from "expo-router";
-import { View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useDateStore } from "@/lib/stores/use-date-store";
-import { BottomSheetModal } from "@/components/native/bottom-sheet-modal";
 import { useRef } from "react";
-import { BottomSheetModal as RNBottomSheetModal } from "@gorhom/bottom-sheet";
-import { DatePicker } from "@/components/native/date-picker";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
   const bottomSheetModalRef = useRef<RNBottomSheetModal>(null);
   const { date, setDate } = useDateStore();
+
+  const data: MomentProps[] = [
+    {
+      imageUrl: "https://picsum.photos/1080/1920",
+      title: "Day 1",
+      note: "went out",
+      date: dayjs(),
+    },
+    {
+      imageUrl: "https://picsum.photos/1080/1920",
+      title: "Day 2",
+      note: "went out",
+      date: dayjs().subtract(1, "day"),
+    },
+    {
+      imageUrl: "https://picsum.photos/1080/1920",
+      title: "Day 3",
+      note: "went out",
+      date: dayjs().subtract(2, "day"),
+    },
+    {
+      imageUrl: "https://picsum.photos/1080/1920",
+      title: "Day 4",
+      note: "went out",
+      date: dayjs().subtract(3, "day"),
+    },
+  ];
 
   return (
     <SafeAreaView edges={["bottom"]} className="flex-1">
@@ -26,15 +53,14 @@ export default function Home() {
           ),
         }}
       />
-      <View>
-        <Moment
-          imageUrl="https://picsum.photos/500"
-          title="special day"
-          date={dayjs("2025-10-15 4:39")}
-        />
-      </View>
+
+      <MomentCarousel data={data} />
+
       <BottomSheetModal ref={bottomSheetModalRef}>
-        <DatePicker date={date} onChange={(date) => setDate(date)} />
+        <DatePicker
+          date={date}
+          onChange={(selectedDate) => setDate(selectedDate)}
+        />
       </BottomSheetModal>
     </SafeAreaView>
   );

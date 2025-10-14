@@ -16,7 +16,7 @@ export function DateAndTime({ date = dayjs() }: DateAndTimeProps) {
       </PillList>
       <PillList>
         <Pill>{date.format("ddd")}</Pill>
-        <Pill>{date.format("h:m")}</Pill>
+        <Pill>{date.format("h:m A")}</Pill>
       </PillList>
     </View>
   );

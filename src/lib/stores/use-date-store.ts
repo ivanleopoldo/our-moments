@@ -8,7 +8,7 @@ type DateState = {
 };
 
 type DateActions = {
-  isSame: (date: Dayjs, granularity?: OpUnitType) => boolean;
+  isToday: (date: Dayjs, granularity?: OpUnitType) => boolean;
   isAfter: (date: Dayjs, granularity?: OpUnitType) => boolean;
   setDate: (date: Dayjs) => void;
   addDays: (by: number) => void;
@@ -19,7 +19,7 @@ type DateActions = {
 
 const useDateStoreBase = create<DateState & DateActions>((set) => ({
   date: dayjs(),
-  isSame: (date, granularity = "day") =>
+  isToday: (date, granularity = "day") =>
     date ? date.isSame(dayjs(), granularity) : false,
   isAfter: (date, granularity = "day") =>
     date ? date.isAfter(dayjs().startOf(granularity)) : false,

@@ -12,17 +12,11 @@ import { useDateStore } from "@/lib/stores/use-date-store";
 export type HeaderProps = {
   date?: Dayjs;
   onPressDate?: () => void;
-  goPreviousDay?: () => void;
-  goNextDay?: () => void;
 } & NativeStackHeaderProps;
 
 export function Header(props: HeaderProps) {
   const insets = useSafeAreaInsets();
-  const { date, subDays, addDays, isSame, isAfter } = useDateStore();
-
-  const goPreviousDay = props.goPreviousDay || (() => subDays(1));
-
-  const goNextDay = props.goNextDay || (() => addDays(1));
+  const { date, isToday } = useDateStore();
 
   return (
     <View
@@ -34,32 +28,19 @@ export function Header(props: HeaderProps) {
       </Button>
 
       <View className="items-center flex-row gap-2 px-2">
-        <Button variant="outline" size="icon" onPress={goPreviousDay}>
-          <Entypo name="chevron-left" className="text-foreground" />
-        </Button>
-
         <Button
           variant="outline"
-          className="w-24 justify-evenly"
+          className="justify-evenly"
           onPress={props.onPressDate}
         >
           <Text>
-            {isSame(date)
+            {isToday(date)
               ? "Today"
-              : isSame(date, "year")
+              : isToday(date, "year")
                 ? date.format("MMM D")
-                : date.format("M/D/YY")}
+                : date.format("MMM D, YYYY")}
           </Text>
           <Entypo name="chevron-down" className="text-foreground" />
-        </Button>
-
-        <Button
-          disabled={isAfter(date)}
-          variant="outline"
-          size="icon"
-          onPress={goNextDay}
-        >
-          <Entypo name="chevron-right" className="text-foreground" />
         </Button>
       </View>
     </View>
