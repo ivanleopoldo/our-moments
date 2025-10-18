@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { Fontisto } from "@/lib/icons/fontisto";
-import { useSSO } from "@clerk/clerk-expo";
+import { isClerkAPIResponseError, useSSO } from "@clerk/clerk-expo";
+import type { OAuthStrategy } from "@clerk/types";
 import * as AuthSession from "expo-auth-session";
 import * as WebBrowser from "expo-web-browser";
 import { useCallback, useEffect } from "react";
@@ -24,24 +25,29 @@ export default function Auth() {
   useWarmUpBrowser();
 
   const { startSSOFlow } = useSSO();
-  const onPress = useCallback(async () => {
-    try {
-      const { createdSessionId, setActive } = await startSSOFlow({
-        strategy: "oauth_google",
-        redirectUrl: AuthSession.makeRedirectUri(),
-      });
-
-      if (createdSessionId) {
-        setActive!({
-          session: createdSessionId,
+  const onPress = useCallback(
+    async (strategy: OAuthStrategy) => {
+      try {
+        const { createdSessionId, setActive } = await startSSOFlow({
+          strategy: strategy,
+          redirectUrl: AuthSession.makeRedirectUri(),
         });
-      } else {
-        // no session
+
+        if (createdSessionId) {
+          setActive!({
+            session: createdSessionId,
+          });
+        } else {
+          // no session
+        }
+      } catch (err) {
+        if (isClerkAPIResponseError(err)) {
+          console.error(JSON.stringify(err, null, 2));
+        }
       }
-    } catch (err) {
-      console.error(JSON.stringify(err, null, 2));
-    }
-  }, [startSSOFlow]);
+    },
+    [startSSOFlow],
+  );
 
   return (
     <SafeAreaView className="flex-1 p-6 items-center gap-4 justify-center">
@@ -54,11 +60,11 @@ export default function Auth() {
         </Text>
       </View>
       <View className="gap-1 w-full">
-        <Button onPress={onPress} variant={"outline"}>
+        <Button onPress={() => onPress("oauth_google")} variant={"outline"}>
           <Fontisto name="google" className="text-foreground" size={16} />
           <Text>Continue with Google</Text>
         </Button>
-        <Button variant={"outline"}>
+        <Button onPress={() => onPress("oauth_apple")} variant={"outline"}>
           <Fontisto name="apple" className="text-foreground" size={16} />
           <Text>Continue with Apple</Text>
         </Button>
