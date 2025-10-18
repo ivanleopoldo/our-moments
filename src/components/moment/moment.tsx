@@ -13,10 +13,11 @@ export type MomentProps = {
   date?: Dayjs;
 };
 
+// TODO: make long pressable
 export function Moment({ date = dayjs(), ...props }: MomentProps) {
   return (
-    <Card className="rounded-3xl p-4 justify-between">
-      <View className="relative gap-2">
+    <Card className="rounded-3xl p-6 justify-between h-5/6">
+      <View className="relative gap-3">
         <AspectRatio className="relative w-full overflow-hidden rounded-xl">
           <Image
             source={{ uri: props.imageUrl }}
@@ -24,10 +25,12 @@ export function Moment({ date = dayjs(), ...props }: MomentProps) {
           />
         </AspectRatio>
         <DateAndTime date={date} />
-        <View>
-          <Text className="font-sans text-2xl text-justify">{props.title}</Text>
+        <View className="gap-1">
+          <Text className="font-sans text-3xl text-justify">{props.title}</Text>
           {props.note && (
-            <Text className="font-sans text-xl text-justify">{props.note}</Text>
+            <Text className="font-sans text-2xl text-justify">
+              {props.note}
+            </Text>
           )}
         </View>
       </View>
