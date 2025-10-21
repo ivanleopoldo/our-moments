@@ -42,10 +42,7 @@ export default function Onboarding() {
       <Pager ref={ref} pages={pages} page={page} setPage={setPage} />
       {page < pages.length - 1 ? (
         <View className="flex-row justify-between px-4">
-          <Button
-            onPress={() => router.replace("/(app)/connect")}
-            variant="ghost"
-          >
+          <Button onPress={() => router.replace("/connect")} variant="ghost">
             <Text>Skip</Text>
           </Button>
           <Button onPress={handleContinue}>
@@ -53,7 +50,7 @@ export default function Onboarding() {
           </Button>
         </View>
       ) : (
-        <Button onPress={() => router.replace("/(app)/connect")}>
+        <Button onPress={() => router.replace("/connect")}>
           <Text>Get Started</Text>
         </Button>
       )}

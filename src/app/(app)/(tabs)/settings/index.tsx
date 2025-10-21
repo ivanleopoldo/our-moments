@@ -1,5 +1,5 @@
 import { Text } from "@/components/ui/text";
-import { router, Stack } from "expo-router";
+import { router, Stack, Tabs } from "expo-router";
 import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { List, Row } from "@/components/native/ios-list";
@@ -10,12 +10,6 @@ export default function Settings() {
   const { signOut } = useClerk();
   return (
     <>
-      <Stack.Screen
-        options={{
-          headerTransparent: true,
-          headerBlurEffect: "prominent",
-        }}
-      />
       <SafeAreaView edges={[]} className="flex-1">
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"

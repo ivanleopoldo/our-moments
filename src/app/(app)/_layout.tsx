@@ -1,6 +1,6 @@
+import { useUser } from "@clerk/clerk-expo";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { Redirect, Stack } from "expo-router";
-import { useUser } from "@clerk/clerk-expo";
 
 export default function AppLayout() {
   const { isSignedIn } = useUser();
@@ -11,19 +11,11 @@ export default function AppLayout() {
 
   return (
     <BottomSheetModalProvider>
-      <Stack>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="moment/[id]" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="settings"
-          options={{
-            headerLargeTitle: true,
-            headerTitle: "Settings",
-            presentation: "modal",
-          }}
-        />
-        <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-        <Stack.Screen name="connect" options={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="moment/[id]" />
+        <Stack.Screen name="connect" />
+        <Stack.Screen name="onboarding" />
       </Stack>
     </BottomSheetModalProvider>
   );

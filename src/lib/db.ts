@@ -1,16 +1,9 @@
-import { init, i } from "@instantdb/react-native";
+import { init, InstaQLEntity } from "@instantdb/react-native";
+import schema, { AppSchema } from "../instant.schema";
 
-export const APP_ID = "13eea2e1-b92d-41c8-b665-aba1c5431718";
+export type TMoment = InstaQLEntity<AppSchema, "moments">;
 
-const schema = i.schema({
-  entities: {
-    moments: i.entity({
-      id: i.string(),
-      title: i.string(),
-      date: i.string(),
-      image: i.string(),
-    }),
-  },
+export const db = init({
+  appId: process.env.EXPO_PUBLIC_INSTANT_APP_ID!,
+  schema,
 });
-
-export const db = init({ appId: APP_ID, schema });

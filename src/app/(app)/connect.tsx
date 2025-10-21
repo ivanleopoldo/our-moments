@@ -84,7 +84,7 @@ export default function Connect() {
                 <InputOTP />
               </View>
               <View className="w-full">
-                <Button onPress={() => router.replace("/(app)")}>
+                <Button onPress={() => router.replace("/(app)/(tabs)")}>
                   <Text>Connect</Text>
                 </Button>
               </View>
